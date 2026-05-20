@@ -1,4 +1,3 @@
-</html>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -26,37 +25,50 @@
 
     <br><br>
 
-    <button onclick="resoudreEquation()">Résoudre</button>
+    <button onclick="resoudreEquation()">
+        Résoudre
+    </button>
 
     <h2>Résultat :</h2>
     <p id="resultat"></p>
 
     <script>
         function resoudreEquation() {
+
             let a = Number(document.getElementById("a").value);
             let b = Number(document.getElementById("b").value);
             let c = Number(document.getElementById("c").value);
 
-            let delta = b*b - 4*a*c;
+            if (a === 0) {
+                document.getElementById("resultat").innerHTML =
+                    "Erreur : a ne peut pas être égal à 0.";
+                return;
+            }
+
+            let delta = b * b - 4 * a * c;
 
             let resultat = "Delta = " + delta + "<br>";
 
             if (delta > 0) {
-                let x1 = (-b - Math.sqrt(delta)) / (2*a);
-                let x2 = (-b + Math.sqrt(delta)) / (2*a);
+
+                let x1 = (-b - Math.sqrt(delta)) / (2 * a);
+                let x2 = (-b + Math.sqrt(delta)) / (2 * a);
 
                 resultat += "Deux solutions :<br>";
                 resultat += "x1 = " + x1 + "<br>";
                 resultat += "x2 = " + x2;
-            } 
-            else if (delta === 0) {
-                let x = -b / (2*a);
+
+            } else if (delta === 0) {
+
+                let x = -b / (2 * a);
 
                 resultat += "Une seule solution :<br>";
                 resultat += "x = " + x;
-            } 
-            else {
+
+            } else {
+
                 resultat += "Pas de solution réelle.";
+
             }
 
             document.getElementById("resultat").innerHTML = resultat;
