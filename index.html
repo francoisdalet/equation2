@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Équation du second degré</title>
+</head>
+<body>
+
+    <h1>Résoudre une équation du second degré</h1>
+
+    <p>Forme : ax² + bx + c = 0</p>
+
+    <label>a :</label>
+    <input type="number" id="a">
+
+    <br><br>
+
+    <label>b :</label>
+    <input type="number" id="b">
+
+    <br><br>
+
+    <label>c :</label>
+    <input type="number" id="c">
+
+    <br><br>
+
+    <button onclick="resoudreEquation()">Résoudre</button>
+
+    <h2>Résultat :</h2>
+    <p id="resultat"></p>
+
+    <script>
+        function resoudreEquation() {
+            let a = Number(document.getElementById("a").value);
+            let b = Number(document.getElementById("b").value);
+            let c = Number(document.getElementById("c").value);
+
+            let delta = b*b - 4*a*c;
+
+            let resultat = "Delta = " + delta + "<br>";
+
+            if (delta > 0) {
+                let x1 = (-b - Math.sqrt(delta)) / (2*a);
+                let x2 = (-b + Math.sqrt(delta)) / (2*a);
+
+                resultat += "Deux solutions :<br>";
+                resultat += "x1 = " + x1 + "<br>";
+                resultat += "x2 = " + x2;
+            } 
+            else if (delta === 0) {
+                let x = -b / (2*a);
+
+                resultat += "Une seule solution :<br>";
+                resultat += "x = " + x;
+            } 
+            else {
+                resultat += "Pas de solution réelle.";
+            }
+
+            document.getElementById("resultat").innerHTML = resultat;
+        }
+    </script>
+
+</body>
+</html>
